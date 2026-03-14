@@ -1229,76 +1229,88 @@ body{
 /* ========================= */
 /* MOBILE FIX */
 
-html, body{
-  width:100%;
-  overflow-x:hidden;   /* stop sideways scrolling */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* Phone layout */
-@media screen and (max-width:600px){
+@media screen and (max-width: 600px) {
 
-  /* Center header */
-  .header{
-    flex-direction:row;   /* keep items in a row */
-    align-items:center;
-    justify-content:flex-start;
-    padding:10px 5%;
-    gap:10px;            /* space between items */
+  /* Header: navbar på toppen */
+  .header {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 5%;
+    gap: 10px;
   }
 
-  /* Navbar side by side */
-  .navbar{
-    display:flex;
-    flex-direction:row;  /* stay in a row */
-    flex-wrap:nowrap;    /* no wrapping */
-    justify-content:flex-start;
-    gap:8px;
+  /* Navbar: home, about m.m. i rad */
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-left: auto; /* skjuter navbar till höger */
+  }
+  .navbar a {
+    font-size: 14px; 
+    padding: 5px 8px;
+    text-decoration: none;
   }
 
-  /* Navbar links smaller if needed */
-  .navbar a{
-    font-size:14px;
+  /* Main text mindre och centrerad */
+  .home-content {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
-  /* Main text smaller */
-  .home-content{
-    max-width:85%;
-    margin:0 auto;
-    text-align:center;
-    font-size:15px;
-    line-height:1.5;
+  /* ========================= */
+  /* Circles in corners */
+  .kiss-circle {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    border-radius: 50%;
+  }
+  .kiss-circle.tl { top: 10px; left: 10px; }     /* top-left */
+  .kiss-circle.tr { top: 10px; right: 10px; }    /* top-right */
+  .kiss-circle.bl { bottom: 10px; left: 10px; }  /* bottom-left */
+  .kiss-circle.br { bottom: 10px; right: 10px; } /* bottom-right (grön cirkel) */
+
+  /* Logo bredvid nedre högra gröna cirkeln */
+  .kiss-logo {
+    font-size: 16px;
+    position: fixed;
+    bottom: 25px;         /* lite ovanför cirkelns botten */
+    right: 90px;           /* 70px cirkel + 10px margin + 10px extra */
+    white-space: nowrap;
   }
 
-  /* Fix big circles on phones */
-  .kiss-circle{
-    width:70px;
-    height:70px;
+  /* Galleri: mindre bilder, responsivt */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .gallery img {
+    width: calc(33% - 10px); 
+    height: auto;
   }
 
-  /* Move circles slightly inside screen */
-  .kiss-circle.tl{top:10px; left:10px;}
-  .kiss-circle.tr{top:10px; right:10px;}
-  .kiss-circle.bl{bottom:10px; left:10px;}
-  .kiss-circle.br{bottom:10px; right:10px;}
-
-  /* Place "Kiss Webside" next to green circle */
-  .kiss-logo{
-    font-size:16px;     /* smaller text */
-    position:fixed;
-    top:25px;           /* vertically aligned with circle */
-    left:90px;          /* 70px circle + 10px margin + 10px extra */
+  /* Fix för höjd på små skärmar */
+  .home {
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 50px;
   }
-
-  /* Make gallery smaller */
-  .gallery img{
-    width:90px;
-    height:90px;
-  }
-
-  /* Avoid vh bug on phones */
-  .home{
-    min-height:100vh;
-    height:auto;
-  }
-
 }
